@@ -4,11 +4,12 @@ import pandas as pd
 
 class LinearRegressionPrediction:
     def __init__(self):
-        path_to_artifacts = "../../research/"
-        self.model = joblib.load(path_to_artifacts + "linear_regression")
+        self.model = joblib.load('linear_regression.joblib')
+        self.transform = joblib.load('train_mode.joblib')
 
     def preprocessing(self, input_data):
         input_data = pd.DataFrame(input_data)
+        self.transform(input_data)
         return input_data
 
     def predict(self, input_data):
